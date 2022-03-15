@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c93dbfbb-a44b-4327-89af-f56b38efaf7a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/OrderService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/Shopping/OrderService/OrderServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/Shopping/OrderService/OrderServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShoppingService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ShoppingService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShoppingService/src/main/java/Shopping/ShoppingService/ShoppingServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShoppingService/src/main/java/Shopping/ShoppingService/ShoppingServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShoppingService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ShoppingService/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShoppingServiceQuery/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ShoppingServiceQuery/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/java/Shopping/ShoppingService/ShoppingServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/java/Shopping/ShoppingService/ShoppingServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="c93dbfbb-a44b-4327-89af-f56b38efaf7a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,11 +33,22 @@
       <option name="presentableId" value="Default" />
       <updated>1647326672188</updated>
       <workItem from="1647326674563" duration="63000" />
-      <workItem from="1647374122726" duration="393000" />
+      <workItem from="1647374122726" duration="848000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
