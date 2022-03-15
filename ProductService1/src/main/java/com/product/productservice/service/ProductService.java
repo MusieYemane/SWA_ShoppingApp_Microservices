@@ -13,5 +13,8 @@ public interface ProductService {
     void deleteProductById(String productNumber);
     Product editProduct(String productNumber, Product product);
 
+    Integer getProductNumInStock(String productNumber);
+    Product addProductToStock(String productNumber, Integer quantity);
+    Product removeProductFromStock(String productNumber, Integer quantity);
 
 }

@@ -1,13 +1,12 @@
 package com.product.productservice.service.impl;
 
+import com.product.productservice.exception.ProductNotfoundException;
 import com.product.productservice.domain.Product;
 import com.product.productservice.domain.Products;
 import com.product.productservice.repository.ProductRepository;
 import com.product.productservice.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -32,19 +31,49 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteProductById(String productNumber) {
         Product product= productRepository.findById(productNumber).orElse(null);
-        if (product==null) return; // throw an exception (product not found)
+        if (product==null) throw new ProductNotfoundException("Product not found"); // throw an exception (product not found)
         productRepository.deleteById(productNumber);
     }
 
     @Override
     public Product editProduct(String productNumber, Product product) {
         Product oldProduct= productRepository.findById(productNumber).orElse(null);
-        if (oldProduct==null) return null; //throw an exception
+        if (oldProduct==null) throw new ProductNotfoundException("Product not found"); //throw an exception
         oldProduct.setProductName(product.getProductName());
         oldProduct.setProductPrice(product.getProductPrice());
         oldProduct.setProductDescription(product.getProductDescription());
         oldProduct.setProductNumInStock(product.getProductNumInStock());
         return productRepository.save(oldProduct);
 
+    }
+
+    @Override
+    public Integer getProductNumInStock(String productNumber) {
+        Product product= productRepository.findById(productNumber).orElse(null);
+        if(product==null) throw new ProductNotfoundException("Product not found"); //handle exception
+        return product.getProductNumInStock();
+    }
+
+    @Override
+    public Product addProductToStock(String productNumber, Integer quantity) {
+        Product product= productRepository.findById(productNumber).orElse(null);
+        if(product==null) throw new ProductNotfoundException("Product not found"); //handle exception
+        product.setProductNumInStock(product.getProductNumInStock()+quantity);
+        return productRepository.save(product);
+    }
+
+    @Override
+    public Product removeProductFromStock(String productNumber, Integer quantity) {
+        Product product= productRepository.findById(productNumber).orElse(null);
+        if(product==null) return null; //handle exception
+        Integer productNumInStock= product.getProductNumInStock();
+        if (quantity> productNumInStock) throw new ProductNotfoundException("Not enough products in stock"); //thorw an exception
+        product.setProductNumInStock(productNumInStock-quantity);
+        //if product number in stock is 0, delete the product
+        if(product.getProductNumInStock()==0) {
+            productRepository.delete(product);
+            return product;
+        }
+        return productRepository.save(product);
     }
 }

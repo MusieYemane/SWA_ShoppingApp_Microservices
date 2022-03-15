@@ -43,4 +43,16 @@ public class ProductController {
         return ResponseEntity.ok(productService.editProduct(productNumber, product));
     }
 
+    @GetMapping("/numInStock/{productNumber}")
+    public ResponseEntity<Integer> getProductNumInStock(@PathVariable String productNumber){
+
+        return ResponseEntity.ok(productService.getProductNumInStock(productNumber));
+    }
+    @PutMapping("/remove/{productNumber}/{quantity}")
+    public ResponseEntity<Product> removeProductFromStock(@PathVariable("productNumber") String productNumber,
+                                                          @PathVariable("quantity") Integer quantity){
+
+        return ResponseEntity.ok(productService.removeProductFromStock(productNumber, quantity));
+    }
+
 }

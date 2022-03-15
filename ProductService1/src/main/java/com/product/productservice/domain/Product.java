@@ -18,4 +18,11 @@ public class Product {
     private String productDescription;
     private Integer productNumInStock;
 
+
+    // remove product from stock
+    public void removeProductFromStock(int quantity){
+        if (quantity> productNumInStock) return; //thorw an exception
+        productNumInStock= productNumInStock-quantity;
+    }
+
 }
