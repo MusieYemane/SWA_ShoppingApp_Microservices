@@ -4,6 +4,7 @@ package com.example.customerservice.controller;
 import com.example.customerservice.Service.CustomerService;
 import com.example.customerservice.domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,8 +21,8 @@ public class CustomerController {
         return customerService.saveCustomer(customer);
     }
     @PostMapping("/update")
-    public Customer updateCustomer(@RequestBody Customer customer){
-        return customerService.updateCustomer(customer);
+    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer){
+        return ResponseEntity.ok(customerService.updateCustomer(customer));
 
     }
     @GetMapping("/delete{customerId}")
@@ -31,12 +32,13 @@ public class CustomerController {
 
     }
     @GetMapping("/find{customerId}")
-    public Optional<Customer> findById(@RequestParam  String customerId)
+    public ResponseEntity<Customer> findById(@RequestParam  String customerId)
     {
-        return customerService.findById(customerId);
+        return ResponseEntity.ok(customerService.findById(customerId).orElse(null));
     }
 @GetMapping("/findall")
-    public List<Customer> findAll(){
-        return customerService.findAll();
+    public ResponseEntity<List<Customer>> findAll(){
+
+        return ResponseEntity.ok(customerService.findAll());
     }
 }
