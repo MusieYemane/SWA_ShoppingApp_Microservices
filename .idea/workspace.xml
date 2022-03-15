@@ -2,87 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c93dbfbb-a44b-4327-89af-f56b38efaf7a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/OrderService/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderService/src/main/java/Shopping/OrderService/Controller/OrderController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderService/src/main/java/Shopping/OrderService/Integration/Listener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderService/src/main/java/Shopping/OrderService/Model/Address.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderService/src/main/java/Shopping/OrderService/Model/CartLine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderService/src/main/java/Shopping/OrderService/Model/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderService/src/main/java/Shopping/OrderService/Model/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderService/src/main/java/Shopping/OrderService/Model/OrderLine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderService/src/main/java/Shopping/OrderService/OrderServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderService/src/main/java/Shopping/OrderService/Repository/OrderRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderService/src/main/java/Shopping/OrderService/Service/OrderService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderService/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingService/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingService/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingService/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingService/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingService/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingService/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingService/src/main/java/Shopping/ShoppingService/Controller/ShoppingController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingService/src/main/java/Shopping/ShoppingService/Integration/CustomerProductDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingService/src/main/java/Shopping/ShoppingService/Integration/CustomerProductQualityDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingService/src/main/java/Shopping/ShoppingService/Integration/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingService/src/main/java/Shopping/ShoppingService/Integration/Sender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingService/src/main/java/Shopping/ShoppingService/Model/CartLine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingService/src/main/java/Shopping/ShoppingService/Model/CartLines.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingService/src/main/java/Shopping/ShoppingService/Model/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingService/src/main/java/Shopping/ShoppingService/Model/ShoppingCart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingService/src/main/java/Shopping/ShoppingService/Repository/ShoppingRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingService/src/main/java/Shopping/ShoppingService/Service/ShoppingService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingService/src/main/java/Shopping/ShoppingService/ShoppingServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingService/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingService/src/test/java/Shopping/ShoppingService/ShoppingServiceApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingServiceQuery/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingServiceQuery/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingServiceQuery/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingServiceQuery/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingServiceQuery/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingServiceQuery/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/java/Shopping/ShoppingService/Controller/ShoppingController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/java/Shopping/ShoppingService/Integration/CustomerProductDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/java/Shopping/ShoppingService/Integration/CustomerProductQualityDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/java/Shopping/ShoppingService/Integration/Listener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/java/Shopping/ShoppingService/Integration/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/java/Shopping/ShoppingService/Model/CartLine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/java/Shopping/ShoppingService/Model/CartLines.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/java/Shopping/ShoppingService/Model/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/java/Shopping/ShoppingService/Model/ShoppingCart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/java/Shopping/ShoppingService/Repository/ShoppingRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/java/Shopping/ShoppingService/Service/ShoppingService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/java/Shopping/ShoppingService/ShoppingServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShoppingServiceQuery/src/test/java/Shopping/ShoppingService/ShoppingServiceApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EurekaServer/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/EurekaServer/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EurekaServer/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/EurekaServer/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EurekaServer/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/EurekaServer/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EurekaServer/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/EurekaServer/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EurekaServer/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/EurekaServer/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/Shopping/OrderService/Model/CartLines.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/Shopping/OrderService/Model/CartLines.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/Shopping/OrderService/Model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/Shopping/OrderService/Model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/test/java/Shopping/OrderService/OrderServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/test/java/Shopping/OrderService/OrderServiceApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProductService/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/ProductService/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProductService/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ProductService/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProductService/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ProductService/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProductService/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/ProductService/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProductService/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/ProductService/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProductService/src/main/java/com/product/productservice/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProductService/src/main/java/com/product/productservice/domain/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProductService/src/main/java/com/product/productservice/domain/Products.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProductService/src/main/java/com/product/productservice/domain/Products.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProductService/src/test/java/com/product/productservice/ProductServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProductService/src/test/java/com/product/productservice/ProductServiceApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProductService1/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProductService1/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProductService1/src/main/java/com/product/productservice/ProductServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProductService1/src/main/java/com/product/productservice/ProductServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProductService1/src/main/java/com/product/productservice/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProductService1/src/main/java/com/product/productservice/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProductService1/src/main/java/com/product/productservice/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProductService1/src/main/java/com/product/productservice/domain/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProductService1/src/main/java/com/product/productservice/domain/Products.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProductService1/src/main/java/com/product/productservice/domain/Products.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProductService1/src/main/java/com/product/productservice/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProductService1/src/main/java/com/product/productservice/repository/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProductService1/src/main/java/com/product/productservice/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProductService1/src/main/java/com/product/productservice/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProductService1/src/test/java/com/product/productservice/ProductServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProductService1/src/test/java/com/product/productservice/ProductServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/Shopping/OrderService/OrderServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/Shopping/OrderService/OrderServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShoppingService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ShoppingService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShoppingService/src/main/java/Shopping/ShoppingService/ShoppingServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShoppingService/src/main/java/Shopping/ShoppingService/ShoppingServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShoppingService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ShoppingService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShoppingServiceQuery/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ShoppingServiceQuery/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/java/Shopping/ShoppingService/ShoppingServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/java/Shopping/ShoppingService/ShoppingServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ShoppingServiceQuery/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +32,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/EurekaServer" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -115,6 +43,7 @@
       <option name="presentableId" value="Default" />
       <updated>1647326672188</updated>
       <workItem from="1647326674563" duration="63000" />
+      <workItem from="1647374122726" duration="393000" />
     </task>
     <servers />
   </component>
