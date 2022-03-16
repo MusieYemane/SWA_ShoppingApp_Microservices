@@ -53,14 +53,14 @@ public class ProductController {
         return ResponseEntity.ok(productService.editProduct(productNumber, product));
     }
 
-    @GetMapping("/numInStock/{productNumber}")
-    public ResponseEntity<Integer> getProductNumInStock(@PathVariable String productNumber){
-
-        return ResponseEntity.ok(productService.getProductNumInStock(productNumber));
-    }
-    @PutMapping("/changeQuantity")
-    public void removeProductFromStock(@RequestBody OrderLines orderLines){
-        productService.removeQuantityOfProducts(orderLines);
-    }
+//    @GetMapping("/numInStock/{productNumber}")
+//    public ResponseEntity<Integer> getProductNumInStock(@PathVariable String productNumber){
+//
+//        return ResponseEntity.ok(productService.getProductNumInStock(productNumber));
+//    }
+//    @PutMapping("/changeQuantity")
+//    public void removeProductFromStock(@RequestBody OrderLines orderLines){
+//        productService.removeQuantityOfProducts(orderLines);
+//    }
 
 }
