@@ -21,17 +21,18 @@ public class ShoppingService {
     private Sender sender;
 
 
-    public void addShoppingCart(String customerId){
+    public ShoppingCart addShoppingCart(String customerId){
         Message<String> message = new Message<String>(
                 "addCart",
                 customerId
         );
-        shoppingRepository.save(new ShoppingCart(customerId));
+       ShoppingCart shoppingCart = shoppingRepository.save(new ShoppingCart(customerId));
 
         sender.send(message);
+        return shoppingCart;
     }
 
-    public void addProductToAShoppingCart(String customerId, Product product,Integer quantity){
+    public Product addProductToAShoppingCart(String customerId, Product product,Integer quantity){
         Message<CustomerProductQualityDTO> customerProductQualityDTOMessage =
                 new Message<CustomerProductQualityDTO>(
                         "addProductAndQuantity",
@@ -46,6 +47,8 @@ public class ShoppingService {
         shoppingRepository.save(shoppingCart);
 
         sender.send(customerProductQualityDTOMessage);
+        return product;
+
     }
 
     public void removeProductWithQuantity(String customerId , Product product , Integer quantity){
@@ -84,9 +87,22 @@ public class ShoppingService {
 
     public CartLines checkoutCart(String customerId){
 
+        Message<String> message = new Message<String>(
+                "checkout",
+                customerId
+        );
+
         ShoppingCart cart = shoppingRepository.findByCustomerId(customerId).get();
 
+        sender.send(message);
+
         return new CartLines(cart.getCartLineList());
+    }
+
+    public void removeCartLine(String customerId){
+        ShoppingCart shoppingCart = shoppingRepository.findByCustomerId(customerId).get();
+        shoppingCart.removeCartLineList();
+        shoppingRepository.save(shoppingCart);
     }
 
 }

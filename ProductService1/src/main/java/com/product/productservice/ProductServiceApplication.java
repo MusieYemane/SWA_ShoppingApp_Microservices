@@ -6,36 +6,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class ProductServiceApplication implements CommandLineRunner {
+@EnableKafka
+public class ProductServiceApplication{
 
     public static void main(String[] args) {
         SpringApplication.run(ProductServiceApplication.class, args);
     }
 
-    @Override
-    public void run(String... args) throws Exception {
-
-//        //create products
-//        Product prod1= new Product();
-//        prod1.setProductName("MacBooc pro");
-//        prod1.setProductPrice(2000.0);
-//        prod1.setProductDescription("%00 gb 16 RAM");
-//        prod1.setProductNumInStock(10);
-//        getRestTemplate().postForObject("http://localhost:8081/products", );
-//        Product prod2= new Product();
-//        prod1.setProductName("MacBooc pro");
-//        prod1.setProductPrice(2000.0);
-//        prod1.setProductDescription("%00 gb 16 RAM");
-//        prod1.setProductNumInStock(10);
-
-    }
-
-    @Bean
-    public RestTemplate getRestTemplate(){
-        return new RestTemplate();
-    }
 }

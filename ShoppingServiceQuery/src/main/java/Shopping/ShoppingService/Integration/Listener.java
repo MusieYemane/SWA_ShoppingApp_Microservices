@@ -68,6 +68,12 @@ public class Listener {
                         customerProductDTO.getProduct());
             }
 
+             else if(message.getCommand().equals("checkout")){
+
+                 shoppingService.removeCartLine((String) message.getMessage());
+             }
+
+
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         } catch (IOException e) {

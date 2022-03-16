@@ -14,6 +14,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
     @Override
     public Products getAllProducts() {
         return new Products(productRepository.findAll());
@@ -81,7 +82,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void removeQuantityOfProducts(OrderLines orderLines) {
         if (orderLines==null) return;
-        orderLines.getListOfOrderLines().stream().forEach(orderLine->{
+        orderLines.getOrderLineList().stream().forEach(orderLine->{
             removeProductFromStock(orderLine.getProduct().getProductNumber(), orderLine.getQuantity());
         });
     }

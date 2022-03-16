@@ -19,7 +19,7 @@ public class OrderService {
     @Autowired
     private Sender sender;
 
-    public void createOrder(CartLines cartLines){
+    public Order createOrder(CartLines cartLines){
         Order order = new Order();
         List orderLineList = new ArrayList<>();
         for(CartLine cartLine : cartLines.getCartLineList()){
@@ -31,7 +31,7 @@ public class OrderService {
         order.setOrderLineList(orderLineList);
         Order order1 = orderRepository.save(order);
         System.out.println("Creating an Order" + order1);
-
+        return order1;
     }
 
     public void placeOrder(String orderNumber , Customer customer){

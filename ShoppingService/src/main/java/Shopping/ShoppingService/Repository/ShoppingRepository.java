@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface ShoppingRepository extends MongoRepository<ShoppingCart,String> {
 
     public Optional<ShoppingCart> findByCustomerId(String customerId);
+
 }

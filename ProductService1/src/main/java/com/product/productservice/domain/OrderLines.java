@@ -11,5 +11,5 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderLines {
-    private List<OrderLine> listOfOrderLines;
+    private List<OrderLine> orderLineList;
 }

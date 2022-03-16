@@ -57,4 +57,8 @@ public class ShoppingCart {
         return this.cartLineList;
     }
 
+    public void removeCartLineList(){
+        this.cartLineList = new ArrayList<>();
+    }
+
 }

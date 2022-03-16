@@ -53,6 +53,10 @@ public class ShoppingCart {
         cartLineList.remove(product);
     }
 
+    public void removeCartLineList(){
+        this.cartLineList = new ArrayList<>();
+    }
+
     public List<CartLine> viewShoopingcart(){
         return this.cartLineList;
     }

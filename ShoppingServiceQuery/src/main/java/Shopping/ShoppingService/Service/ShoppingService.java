@@ -46,4 +46,10 @@ public class ShoppingService {
 
     }
 
+    public void removeCartLine(String customerId){
+        ShoppingCart shoppingCart = shoppingRepository.findByCustomerId(customerId).get();
+        shoppingCart.removeCartLineList();
+        shoppingRepository.save(shoppingCart);
+    }
+
 }
