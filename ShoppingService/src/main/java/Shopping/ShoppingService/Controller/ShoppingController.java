@@ -1,19 +1,20 @@
 package Shopping.ShoppingService.Controller;
 
+import Shopping.ShoppingService.Model.CartLines;
 import Shopping.ShoppingService.Model.Product;
-import Shopping.ShoppingService.Model.ShoppingCart;
 import Shopping.ShoppingService.Service.ShoppingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ShoppingController {
 
     @Autowired
     private ShoppingService shoppingService;
+
+    @Autowired
+    private ShoppingFeignClient shoppingFeignClient;
 
     @PostMapping("/addCartForACustomer/{customerId}")
     public void addShoppingCartForCustomer(@PathVariable String customerId){
@@ -38,6 +39,25 @@ public class ShoppingController {
     public void removeAllProduct(@PathVariable String customerId , @RequestBody Product product){
         shoppingService.removeAllProduct(customerId,product);
     }
+
+    @PostMapping("/checkout/{customerId}")
+    public void checkoutCart(@PathVariable String customerId){
+        CartLines cartLines =  shoppingService.checkoutCart(customerId);
+        shoppingFeignClient.createOrder(cartLines);
+        System.out.println("Sending an order");
+
+    }
+
+    @FeignClient("OrderService")
+    interface ShoppingFeignClient{
+
+        @PostMapping
+        void createOrder(@RequestBody CartLines cartLines);
+
+    }
+
+
+
 
 
 }

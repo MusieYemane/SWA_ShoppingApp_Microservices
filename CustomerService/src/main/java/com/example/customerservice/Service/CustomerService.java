@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @Service
 public class CustomerService {
+
     @Autowired
     private CustomerRepository customerRepository;
 
@@ -34,8 +35,8 @@ public class CustomerService {
         return customerRepository.findById(customerId);
     }
 
-public List<Customer>  findAll(){
+    public List<Customer>  findAll(){
         return customerRepository.findAll();
-}
+    }
 
 }

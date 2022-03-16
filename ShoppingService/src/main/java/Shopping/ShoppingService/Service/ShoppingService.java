@@ -4,6 +4,7 @@ import Shopping.ShoppingService.Integration.CustomerProductDTO;
 import Shopping.ShoppingService.Integration.CustomerProductQualityDTO;
 import Shopping.ShoppingService.Integration.Message;
 import Shopping.ShoppingService.Integration.Sender;
+import Shopping.ShoppingService.Model.CartLines;
 import Shopping.ShoppingService.Model.Product;
 import Shopping.ShoppingService.Model.ShoppingCart;
 import Shopping.ShoppingService.Repository.ShoppingRepository;
@@ -79,6 +80,13 @@ public class ShoppingService {
         shoppingRepository.save(shoppingCart);
         sender.send(customerProductQualityDTOMessage);
 
+    }
+
+    public CartLines checkoutCart(String customerId){
+
+        ShoppingCart cart = shoppingRepository.findByCustomerId(customerId).get();
+
+        return new CartLines(cart.getCartLineList());
     }
 
 }

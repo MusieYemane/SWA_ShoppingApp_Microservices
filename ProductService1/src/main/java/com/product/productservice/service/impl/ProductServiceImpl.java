@@ -68,7 +68,7 @@ public class ProductServiceImpl implements ProductService {
         Product product= productRepository.findById(productNumber).orElse(null);
         if(product==null) return null; //handle exception
         Integer productNumInStock= product.getProductNumInStock();
-        if (quantity> productNumInStock) throw new ProductNotfoundException("Not enough products in stock"); //thorw an exception
+        if (quantity> productNumInStock) throw new ProductNotfoundException("Not enough products in stock"); //throw an exception
         product.setProductNumInStock(productNumInStock-quantity);
         //if product number in stock is 0, delete the product
         if(product.getProductNumInStock()==0) {

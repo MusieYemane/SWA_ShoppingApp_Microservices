@@ -1,5 +1,6 @@
-package Shopping.ShoppingService.Integration;
+package Shopping.OrderService.Integration;
 
+import Shopping.OrderService.Service.OrderService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,19 +11,16 @@ import org.springframework.stereotype.Service;
 public class Sender {
 
     @Autowired
-    private KafkaTemplate<String , String> kafkaTemplate;
+    private KafkaTemplate kafkaTemplate;
 
-    public void send(Message message)  {
+    public void send(Message message){
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
-            String stringMessage= objectMapper.writeValueAsString(message);
-            System.out.println("Sending message");
-            kafkaTemplate.send("shoppingCommand",stringMessage);
-        }
-        catch (JsonProcessingException e) {
+            String messageString = objectMapper.writeValueAsString(message);
+            kafkaTemplate.send("placeOrderTopic" , messageString);
+        } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-
     }
 }

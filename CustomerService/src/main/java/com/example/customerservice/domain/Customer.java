@@ -17,8 +17,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @ToString
 public class Customer {
-    @Autowired
-    CustomerService customerService;
+
     @Id
     private String customerId;
     private String firstName;
@@ -27,13 +26,5 @@ public class Customer {
     private String email;
     private Address address;
 
-//    public Customer updateCustomer(Customer customer){
-//        return customerService.updateCustomer(customer);
-//
-//    }
-//    public Optional<Customer> findById(@RequestParam String customerId)
-//    {
-//        return customerService.findById(customerId);
-//    }
 
 }

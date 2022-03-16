@@ -36,7 +36,8 @@ public class CustomerController {
     {
         return ResponseEntity.ok(customerService.findById(customerId).orElse(null));
     }
-@GetMapping("/findall")
+
+    @GetMapping("/findall")
     public ResponseEntity<List<Customer>> findAll(){
 
         return ResponseEntity.ok(customerService.findAll());

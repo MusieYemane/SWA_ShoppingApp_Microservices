@@ -4,14 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Customer {
+public class OrderLines {
 
-    private String customerId;
-    private String firstName;
-    private String phone;
-    private String email;
-    private Address address;
+    private List<OrderLine> orderLineList;
 }

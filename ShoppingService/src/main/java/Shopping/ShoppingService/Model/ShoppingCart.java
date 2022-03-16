@@ -53,4 +53,8 @@ public class ShoppingCart {
         cartLineList.remove(product);
     }
 
+    public List<CartLine> checkout(){
+        return this.cartLineList;
+    }
+
 }

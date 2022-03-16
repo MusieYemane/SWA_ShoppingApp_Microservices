@@ -1,4 +1,4 @@
-package Shopping.OrderService.Model;
+package com.example.customerservice.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,17 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CartLine {
+public class OrderLine {
 
     private Product product;
-
     private Integer quantity;
-
-    private void changeQuantity(Integer quantity){
-        this.quantity = quantity;
-    }
-
-
-
-
 }
