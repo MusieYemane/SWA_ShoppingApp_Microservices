@@ -4,6 +4,8 @@ package com.product.productservice.controller;
 import com.product.productservice.domain.Product;
 import com.product.productservice.domain.Products;
 import com.product.productservice.service.ProductService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +18,12 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    private static final Logger logger =
+            LoggerFactory.getLogger(ProductController.class.getName());
 
     @GetMapping
     public ResponseEntity<Products> getAllProducts(){
+        logger.info("Calling Products");
         return ResponseEntity.ok(productService.getAllProducts());
     }
 
