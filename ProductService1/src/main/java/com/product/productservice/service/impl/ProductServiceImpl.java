@@ -1,5 +1,6 @@
 package com.product.productservice.service.impl;
 
+import com.product.productservice.domain.OrderLines;
 import com.product.productservice.exception.ProductNotfoundException;
 import com.product.productservice.domain.Product;
 import com.product.productservice.domain.Products;
@@ -75,5 +76,13 @@ public class ProductServiceImpl implements ProductService {
             return product;
         }
         return productRepository.save(product);
+    }
+
+    @Override
+    public void removeQuantityOfProducts(OrderLines orderLines) {
+        if (orderLines==null) return;
+        orderLines.getListOfOrderLines().stream().forEach(orderLine->{
+            removeProductFromStock(orderLine.getProduct().getProductNumber(), orderLine.getQuantity());
+        });
     }
 }

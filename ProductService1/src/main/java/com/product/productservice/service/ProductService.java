@@ -1,5 +1,6 @@
 package com.product.productservice.service;
 
+import com.product.productservice.domain.OrderLines;
 import com.product.productservice.domain.Product;
 import com.product.productservice.domain.Products;
 
@@ -16,5 +17,7 @@ public interface ProductService {
     Integer getProductNumInStock(String productNumber);
     Product addProductToStock(String productNumber, Integer quantity);
     Product removeProductFromStock(String productNumber, Integer quantity);
+    void removeQuantityOfProducts(OrderLines orderLines);
+
 
 }
