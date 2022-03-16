@@ -53,9 +53,14 @@ public class ProductController {
         return ResponseEntity.ok(productService.editProduct(productNumber, product));
     }
 
+    @GetMapping("/{productNumber}/isInStock")
+    public ResponseEntity<Boolean> productIsInStock(@PathVariable String productNumber){
+        if (productService.getProductNumInStock(productNumber)>0) return ResponseEntity.ok(true);
+        return ResponseEntity.ok(false);
+    }
+
 //    @GetMapping("/numInStock/{productNumber}")
 //    public ResponseEntity<Integer> getProductNumInStock(@PathVariable String productNumber){
-//
 //        return ResponseEntity.ok(productService.getProductNumInStock(productNumber));
 //    }
 //    @PutMapping("/changeQuantity")
