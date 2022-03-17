@@ -1,5 +1,5 @@
 server:
-  port: 8089
+  port: 8091
 
 spring:
   application:
@@ -8,7 +8,7 @@ spring:
     mongodb:
       host: localhost
       port: 27017
-      database: productDB
+      database: productServiceDB
   zipkin:
     base-url:
 
