@@ -44,6 +44,7 @@ public class ShoppingService {
         ShoppingCart shoppingCart = shoppingRepository.findByCustomerId(customerId).get();
 
         shoppingCart.addProduct(product,quantity);
+        System.out.println(shoppingCart);
         shoppingRepository.save(shoppingCart);
 
         sender.send(customerProductQualityDTOMessage);
@@ -61,7 +62,6 @@ public class ShoppingService {
                                 quantity)
                 );
         ShoppingCart shoppingCart = shoppingRepository.findByCustomerId(customerId).get();
-
         shoppingCart.removeProduct(product,quantity);
         shoppingRepository.save(shoppingCart);
         sender.send(customerProductQualityDTOMessage);
@@ -95,6 +95,7 @@ public class ShoppingService {
         ShoppingCart cart = shoppingRepository.findByCustomerId(customerId).get();
 
         sender.send(message);
+        System.out.println("This is the list of CartLines : "+cart.getCartLineList());
 
         return new CartLines(cart.getCartLineList());
     }

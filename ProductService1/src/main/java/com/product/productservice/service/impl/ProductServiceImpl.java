@@ -66,9 +66,14 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product removeProductFromStock(String productNumber, Integer quantity) {
+        System.out.println("This is kal problem"+ productNumber + " and  "+ quantity);
         Product product= productRepository.findById(productNumber).orElse(null);
         if(product==null) return null; //handle exception
+
+
         Integer productNumInStock= product.getProductNumInStock();
+
+
         if (quantity> productNumInStock) throw new ProductNotfoundException("Not enough products in stock"); //throw an exception
         product.setProductNumInStock(productNumInStock-quantity);
         //if product number in stock is 0, delete the product
@@ -83,6 +88,7 @@ public class ProductServiceImpl implements ProductService {
     public void removeQuantityOfProducts(OrderLines orderLines) {
         if (orderLines==null) return;
         orderLines.getOrderLineList().stream().forEach(orderLine->{
+
             removeProductFromStock(orderLine.getProduct().getProductNumber(), orderLine.getQuantity());
         });
     }

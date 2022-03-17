@@ -23,13 +23,14 @@ public class OrderListener {
     @KafkaListener(topics= {"placeOrderTopic"})
     public void listenWhenOrderPlaced(@Payload String orderLinesString) {
 
-        System.out.println("Listen ....");
 
         ObjectMapper objectMapper = new ObjectMapper();
         try {
 
             Message message = objectMapper.readValue(orderLinesString, Message.class);
             if (message.getCommand().equals("productService")) {
+                System.out.println("Listen ....");
+
 
                 Message<OrderLines> messageOrderLines = objectMapper.readValue(
                         orderLinesString,

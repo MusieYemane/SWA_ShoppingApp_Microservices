@@ -20,9 +20,11 @@ public class OrderService {
     private Sender sender;
 
     public Order createOrder(CartLines cartLines){
+
         Order order = new Order();
         List orderLineList = new ArrayList<>();
         for(CartLine cartLine : cartLines.getCartLineList()){
+            System.out.println("Still talking");
             OrderLine orderLine = new OrderLine();
             orderLine.setProduct(cartLine.getProduct());
             orderLine.setQuantity(cartLine.getQuantity());
@@ -30,19 +32,23 @@ public class OrderService {
         }
         order.setOrderLineList(orderLineList);
         Order order1 = orderRepository.save(order);
-        System.out.println("Creating an Order" + order1);
         return order1;
     }
 
     public void placeOrder(String orderNumber , Customer customer){
         Order order = orderRepository.findByOrderNumber(orderNumber).get();
+        System.out.println("1"+order);
         order.setCustomer(customer);
+        System.out.println("2"+order);
 
         OrderLines orderLines = new OrderLines(order.getOrderLineList());
+        System.out.println("3"+order);
 
         Message<OrderLines> messageOrderLines = new Message<OrderLines>("productService" ,orderLines);
 
         Message<Order> messageOrder = new Message<Order>("customerService",order);
+        System.out.println("1"+order);
+
         //productService gets Updated
         sender.send(messageOrderLines);
 

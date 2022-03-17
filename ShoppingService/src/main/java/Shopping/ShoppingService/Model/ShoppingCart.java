@@ -41,7 +41,8 @@ public class ShoppingCart {
                 cartLine.changeQuantity(cartLine.getQuantity() - quantity);
                 return true;
             }
-            else if(cartLine.getProduct().equals(product) && cartLine.getQuantity() < quantity ){
+            else if(cartLine.getProduct().equals(product) && cartLine.getQuantity() <= quantity ){
+                cartLineList.remove(product);
                 return false;
             }
         }

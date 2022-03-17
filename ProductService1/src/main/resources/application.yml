@@ -8,9 +8,7 @@ spring:
     mongodb:
       host: localhost
       port: 27017
-      database: productDB
-  zipkin:
-    base-url:
+      database: productServiceDB
 
 eureka:
   client:

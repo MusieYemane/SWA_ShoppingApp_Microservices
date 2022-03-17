@@ -47,7 +47,7 @@ public class ShoppingController {
         }
     }
 
-    @PostMapping("/removeProductFromCartWithQuantity/{customerId}/quantity/{quantity}")
+    @DeleteMapping("/removeProductFromCartWithQuantity/{customerId}/quantity/{quantity}")
     public ResponseEntity<?> removeProductWithQuantity(@PathVariable String customerId ,
                                          @PathVariable Integer quantity
             , @RequestBody Product product){
@@ -55,7 +55,7 @@ public class ShoppingController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PostMapping("/removeProductFromCart/{customerId}")
+    @DeleteMapping("/removeProductFromCart/{customerId}")
     public ResponseEntity<?> removeAllProduct(@PathVariable String customerId , @RequestBody Product product){
 
         shoppingService.removeAllProduct(customerId,product);
@@ -66,8 +66,8 @@ public class ShoppingController {
     @PostMapping("/checkout/{customerId}")
     public ResponseEntity<?> checkoutCart(@PathVariable String customerId){
         CartLines cartLines =  shoppingService.checkoutCart(customerId);
+        System.out.println("Kall is  talking"+cartLines);
         shoppingFeignClient.createOrder(cartLines);
-        System.out.println("Sending an order");
         shoppingService.removeCartLine(customerId);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -77,7 +77,7 @@ public class ShoppingController {
     @FeignClient("OrderService")
     interface ShoppingFeignClient{
 
-        @PostMapping
+        @PostMapping("/order")
         void createOrder(@RequestBody CartLines cartLines);
 
     }
