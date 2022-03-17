@@ -15,10 +15,5 @@ public class Product {
     private Integer productNumInStock;
 
 
-    // remove product from stock
-    public void removeProductFromStock(int quantity){
-        if (quantity> productNumInStock) return; //thorw an exception
-        productNumInStock= productNumInStock-quantity;
-    }
 
 }

@@ -50,15 +50,15 @@ public class ShoppingController {
     @DeleteMapping("/removeProductFromCartWithQuantity/{customerId}/quantity/{quantity}")
     public ResponseEntity<?> removeProductWithQuantity(@PathVariable String customerId ,
                                          @PathVariable Integer quantity
-            , @RequestBody Product product){
-        shoppingService.removeProductWithQuantity(customerId,product,quantity);
+            , String productId){
+        shoppingService.removeProductWithQuantity(customerId,productId,quantity);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping("/removeProductFromCart/{customerId}")
-    public ResponseEntity<?> removeAllProduct(@PathVariable String customerId , @RequestBody Product product){
+    public ResponseEntity<?> removeAllProduct(@PathVariable String customerId , String productId){
 
-        shoppingService.removeAllProduct(customerId,product);
+        shoppingService.removeAllProduct(customerId,productId);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

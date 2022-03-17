@@ -4,6 +4,7 @@ import Shopping.ShoppingService.Integration.CustomerProductDTO;
 import Shopping.ShoppingService.Integration.CustomerProductQualityDTO;
 import Shopping.ShoppingService.Integration.Message;
 import Shopping.ShoppingService.Integration.Sender;
+import Shopping.ShoppingService.Model.CartLine;
 import Shopping.ShoppingService.Model.CartLines;
 import Shopping.ShoppingService.Model.Product;
 import Shopping.ShoppingService.Model.ShoppingCart;
@@ -52,7 +53,18 @@ public class ShoppingService {
 
     }
 
-    public void removeProductWithQuantity(String customerId , Product product , Integer quantity){
+    public void removeProductWithQuantity(String customerId , String productId , Integer quantity){
+
+        ShoppingCart shoppingCart = shoppingRepository.findByCustomerId(customerId).get();
+        Product product = null;
+        for(CartLine cartLine : shoppingCart.getCartLineList()){
+
+            if(cartLine.getProduct().getProductNumber().equals(productId)){
+                product = cartLine.getProduct();
+                shoppingCart.removeProduct(cartLine.getProduct(),quantity);
+            }
+
+        }
         Message<CustomerProductQualityDTO> customerProductQualityDTOMessage =
                 new Message<CustomerProductQualityDTO>(
                         "removeProductWithQuality",
@@ -61,25 +73,36 @@ public class ShoppingService {
                                 product,
                                 quantity)
                 );
-        ShoppingCart shoppingCart = shoppingRepository.findByCustomerId(customerId).get();
-        shoppingCart.removeProduct(product,quantity);
+
         shoppingRepository.save(shoppingCart);
         sender.send(customerProductQualityDTOMessage);
 
     }
 
-    public void removeAllProduct(String customerId , Product product ){
+    public void removeAllProduct(String customerId , String productId ){
+
+        ShoppingCart shoppingCart = shoppingRepository.findByCustomerId(customerId).get();
+
+        Product product = null;
+
+        for(CartLine cartLine : shoppingCart.getCartLineList()){
+
+            if(cartLine.getProduct().getProductNumber().equals(productId)){
+                product = cartLine.getProduct();
+                shoppingCart.removeAllProduct(cartLine.getProduct());
+            }
+
+        }
+
         Message<CustomerProductDTO> customerProductQualityDTOMessage =
                 new Message<CustomerProductDTO>(
                         "removeAllProduct",
                         new CustomerProductDTO(
                                 customerId,
                                 product
-                                )
+                        )
                 );
-        ShoppingCart shoppingCart = shoppingRepository.findByCustomerId(customerId).get();
 
-        shoppingCart.removeAllProduct(product);
         shoppingRepository.save(shoppingCart);
         sender.send(customerProductQualityDTOMessage);
 
