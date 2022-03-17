@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: ShoppingService
+  cloud:
+    config:
+      url: http://localhost:8888
