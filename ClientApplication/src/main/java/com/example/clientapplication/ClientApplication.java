@@ -35,19 +35,20 @@ public class ClientApplication implements CommandLineRunner {
         product.setProductPrice(2000.0);
         product.setProductDescription("256 gb storage 16 RAM");
         product.setProductNumInStock(10);
-        client.addProduct(product);
+//        client.addProduct(product);
 
         System.out.println("============= Get Products=============");
-        System.out.println(client.getProducts());
+        var allProducts= client.getProducts();
+        System.out.println(allProducts);
 
         //edit product
         System.out.println("============= Edit Product from Macbook to Hp=============");
-        Product product1 = client.getProducts().getProducts().get(0);
+        Product product1 = allProducts.getProducts().get(0);
         product1.setProductName("Hp");
         product1.setProductPrice(1200.0);
         product1.setProductDescription("125 gb storage 16 RAM");
         product1.setProductNumInStock(5);
-        client.modifyProduct(product1,product1.getProductNumber());
+//        client.modifyProduct(product1,product1.getProductNumber());
         System.out.println(client.getProducts());
 
 
@@ -65,24 +66,16 @@ public class ClientApplication implements CommandLineRunner {
 
         //Create shopping cart to a customer
         System.out.println("============= Create cart to Customer ...=============");
-        restTemplate().postForLocation(baseUrl+"/cart/addCartForACustomer/6232f2d4958c8e65d8362068", null, ShoppingCart.class);
+//        restTemplate().postForLocation(baseUrl+"/cart/addCartForACustomer/6232f2d4958c8e65d8362068", null, ShoppingCart.class);
 
-        //Put product(Hp) to cart of customer(id=6232ea4a4aee5821ba6a2cf3 )
+        //Put product(Hp) to cart of customer(id=6232f2d4958c8e65d8362068 )
         System.out.println("============= Put product to cart=============");
+//        restTemplate().postForLocation(baseUrl+"/cart/addProductToCartWithQuantity/6232f2d4958c8e65d8362068/quantity/3", product1, Products.class);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+        // Show the shopping cart of customer (6232f2d4958c8e65d8362068)
+        System.out.println("============= Get shopping cart=============");
+        System.out.println(restTemplate().getForObject(baseUrl+"/cartQuery/getShoppingCart/6232f2d4958c8e65d8362068", ShoppingCart.class));
 
 
 
