@@ -2,16 +2,14 @@ package com.example.clientapplication;
 
 
 import com.example.clientapplication.domain.Product;
+import com.example.clientapplication.domain.Products;
 import com.example.clientapplication.domain.ShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
-import java.util.List;
 
 @Service
 public class Client implements ClientInterface{
@@ -21,9 +19,8 @@ public class Client implements ClientInterface{
     @Autowired
     private RestTemplate restTemplate;
 
-    private final String addProductUrl = "http://localhost:8080/product";
-    private final String modifyProductUrl = "http://localhost:8080/product";
-    private final String getProductsUrl =  "http://localhost:8080/product";
+    private final String baseProductUrl = "http://localhost:8080/products";
+
     private final String addProductToShoppingCartUrl = "http://localhost:8080/cart/{customerId}";
     private final String showShoppingCartUrl = "http://localhost:8080/cartQuery/getShoppingCart/{customerId}";
     private final String removeProductFromShoppingCartUrl = "http://localhost:8080/cart";
@@ -32,26 +29,21 @@ public class Client implements ClientInterface{
 
 
     @Override
-    public Product addProduct( Product product) {
-
-        URI uri = restTemplate.postForLocation(addProductUrl, product);
-        System.out.println(uri);
-
-        return product;
+    public void addProduct(Product product) {
+        URI uri = restTemplate.postForLocation(baseProductUrl, product, Product.class);
     }
 
     @Override
     public Product modifyProduct(Product product,String productId ) {
-        restTemplate.put(modifyProductUrl, product,productId);
+        restTemplate.put(baseProductUrl+"/"+productId, product, Product.class);
         return product;
     }
 
     @Override
-    public List<Product> getProducts() {
-        ResponseEntity<List<Product>> response =
-                restTemplate.exchange(getProductsUrl, HttpMethod.GET, null,
-                        new ParameterizedTypeReference<List<Product>>() {});
-        return response.getBody();
+    public Products getProducts() {
+        var products= restTemplate.getForObject(baseProductUrl, Products.class);
+
+        return products;
     }
 
     @Override
@@ -87,6 +79,9 @@ public class Client implements ClientInterface{
 
 
     }
+
+
+
 
 
 

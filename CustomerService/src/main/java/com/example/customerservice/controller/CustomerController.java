@@ -3,6 +3,7 @@ package com.example.customerservice.controller;
 
 import com.example.customerservice.Service.CustomerService;
 import com.example.customerservice.domain.Customer;
+import com.example.customerservice.domain.Customers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,15 +32,15 @@ public class CustomerController {
         customerService.deleteCustomer(customerId);
 
     }
-    @GetMapping("/find{customerId}")
+    @GetMapping("/find/{customerId}")
     public ResponseEntity<Customer> findById(@RequestParam  String customerId)
     {
         return ResponseEntity.ok(customerService.findById(customerId).orElse(null));
     }
 
     @GetMapping("/findall")
-    public ResponseEntity<List<Customer>> findAll(){
+    public ResponseEntity<Customers> findAll(){
 
-        return ResponseEntity.ok(customerService.findAll());
+        return ResponseEntity.ok(new Customers(customerService.findAll()));
     }
 }

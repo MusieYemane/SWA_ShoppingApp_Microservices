@@ -1,14 +1,15 @@
 package com.example.clientapplication;
 
 import com.example.clientapplication.domain.Product;
+import com.example.clientapplication.domain.Products;
 
 import java.util.List;
 
 public interface ClientInterface {
 
-    public Product addProduct(Product product);
+    public void addProduct(Product product);
     public Product modifyProduct(Product product ,String productId) ;
-    public List<Product> getProducts();
+    public Products getProducts();
     public void addProductToShoppingCart(String customerId,Product product);
     public void showShoppingCart(String customerId);
     public void removeProductFromShoppingCart(String customerId,String product);

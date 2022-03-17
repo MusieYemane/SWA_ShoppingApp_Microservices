@@ -1,6 +1,6 @@
 package com.example.clientapplication;
 
-import com.example.clientapplication.domain.Product;
+import com.example.clientapplication.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,6 +15,8 @@ public class ClientApplication implements CommandLineRunner {
     @Autowired
     Client client;
 
+    private final String baseUrl = "http://localhost:8080";
+
 
 
     public static void main(String[] args) {
@@ -23,28 +25,64 @@ public class ClientApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
+        System.out.println("=============Get Products=============");
         System.out.println(client.getProducts());
 
+        System.out.println("=============add Product: Macbook=============");
         Product product= new Product();
         product.setProductName("MacBook pro");
         product.setProductPrice(2000.0);
         product.setProductDescription("256 gb storage 16 RAM");
         product.setProductNumInStock(10);
-
         client.addProduct(product);
+
+        System.out.println("============= Get Products=============");
+        System.out.println(client.getProducts());
+
+        //edit product
+        System.out.println("============= Edit Product from Macbook to Hp=============");
+        Product product1 = client.getProducts().getProducts().get(0);
+        product1.setProductName("Hp");
+        product1.setProductPrice(1200.0);
+        product1.setProductDescription("125 gb storage 16 RAM");
+        product1.setProductNumInStock(5);
+        client.modifyProduct(product1,product1.getProductNumber());
         System.out.println(client.getProducts());
 
 
-        product.setProductName("Hp");
-        product.setProductPrice(1200.0);
-        product.setProductDescription("125 gb storage 16 RAM");
-        product.setProductNumInStock(5);
+        //create and get cutomers
+        System.out.println("============= Create Customer ... =============");
+        Customer cust1= new Customer();
+        cust1.setFirstName("Michal");
+        cust1.setLastName("Rezene");
+        cust1.setEmail("Mike@gmail.com");
+        cust1.setPhone("641256646");
+        cust1.setAddress(new Address("1000 North st", "Fairfield", "52557"));
+        restTemplate().postForLocation(baseUrl+"/customer/save", cust1, Customer.class);
+        System.out.println("============= get Customer=============");
+        System.out.println(restTemplate().getForObject(baseUrl+"/customer/findall", Customers.class));
 
-        client.modifyProduct(product,product.getProductNumber());
-        System.out.println(client.getProducts());
+        //Create shopping cart to a customer
+        System.out.println("============= Create cart to Customer ...=============");
+        restTemplate().postForLocation(baseUrl+"/cart/addCartForACustomer/6232f2d4958c8e65d8362068", null, ShoppingCart.class);
+
+        //Put product(Hp) to cart of customer(id=6232ea4a4aee5821ba6a2cf3 )
+        System.out.println("============= Put product to cart=============");
 
 
-        System.out.println(client.getProducts());
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
