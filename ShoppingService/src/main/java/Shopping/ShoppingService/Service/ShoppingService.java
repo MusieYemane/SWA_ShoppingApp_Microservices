@@ -81,6 +81,8 @@ public class ShoppingService {
 
     public void removeAllProduct(String customerId , String productId ){
 
+
+
         ShoppingCart shoppingCart = shoppingRepository.findByCustomerId(customerId).get();
 
         Product product = null;
@@ -89,22 +91,28 @@ public class ShoppingService {
 
             if(cartLine.getProduct().getProductNumber().equals(productId)){
                 product = cartLine.getProduct();
-                shoppingCart.removeAllProduct(cartLine.getProduct());
+                System.out.println();
+
+                shoppingCart.getCartLineList().remove(cartLine);
+                System.out.println("Shopping cart"+ shoppingCart);
+                Message<CustomerProductDTO> customerProductQualityDTOMessage =
+                        new Message<CustomerProductDTO>(
+                                "removeAllProduct",
+                                new CustomerProductDTO(
+                                        customerId,
+                                        product
+                                )
+                        );
+                //System.out.println("Shopping cart"+ shoppingCart);
+                shoppingRepository.save(shoppingCart);
+                sender.send(customerProductQualityDTOMessage);
+                return;
+
             }
 
         }
 
-        Message<CustomerProductDTO> customerProductQualityDTOMessage =
-                new Message<CustomerProductDTO>(
-                        "removeAllProduct",
-                        new CustomerProductDTO(
-                                customerId,
-                                product
-                        )
-                );
 
-        shoppingRepository.save(shoppingCart);
-        sender.send(customerProductQualityDTOMessage);
 
     }
 

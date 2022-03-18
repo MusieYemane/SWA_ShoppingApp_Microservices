@@ -3,6 +3,7 @@ package Shopping.OrderService.Controller;
 import Shopping.OrderService.Model.CartLines;
 import Shopping.OrderService.Model.Customer;
 import Shopping.OrderService.Model.Order;
+import Shopping.OrderService.Model.Orders;
 import Shopping.OrderService.Service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,12 +19,18 @@ public class OrderController {
 
 
     @PostMapping("/placeOrder/orderNumber/{orderNumber}")
-    public ResponseEntity<?> placeOrder(@PathVariable String orderNumber , @RequestBody Customer customer){
+    public void placeOrder(@PathVariable String orderNumber , @RequestBody Customer customer){
 
         orderService.placeOrder(orderNumber , customer);
 
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
     }
+
+    @GetMapping("/getOrders")
+    public ResponseEntity<?> getOrders(){
+        return new ResponseEntity<Orders>(orderService.getOrders(),HttpStatus.OK);
+    }
+
 
     @PostMapping()
     public ResponseEntity<?> createOrder(@RequestBody CartLines cartLines){

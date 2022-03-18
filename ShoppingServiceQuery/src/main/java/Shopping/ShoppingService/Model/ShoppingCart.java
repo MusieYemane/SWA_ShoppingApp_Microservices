@@ -36,21 +36,27 @@ public class ShoppingCart {
     }
 
     public boolean removeProduct(Product product,Integer quantity){
+        CartLine cartLine2= null;
+
         for(CartLine cartLine : cartLineList){
             if(cartLine.getProduct().equals(product) && cartLine.getQuantity() > quantity ){
                 cartLine.changeQuantity(cartLine.getQuantity() - quantity);
                 return true;
             }
-            else if(cartLine.getProduct().equals(product) && cartLine.getQuantity() < quantity ){
+            else if(cartLine.getProduct().equals(product) && cartLine.getQuantity() <= quantity ){
+                cartLineList.remove(cartLine);
                 return false;
             }
+            else{
+                cartLine2=cartLine;
+            }
         }
-        cartLineList.remove(product);
+        cartLineList.remove(cartLine2);
         return true;
     }
 
-    public void removeAllProduct(Product product){
-        cartLineList.remove(product);
+    public void removeAllProduct(CartLine cartLine){
+        cartLineList.remove(cartLine);
     }
 
     public void removeCartLineList(){

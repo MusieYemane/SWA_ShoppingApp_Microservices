@@ -1,5 +1,6 @@
 package Shopping.ShoppingService.Service;
 
+import Shopping.ShoppingService.Model.CartLine;
 import Shopping.ShoppingService.Model.CartLines;
 import Shopping.ShoppingService.Model.Product;
 import Shopping.ShoppingService.Model.ShoppingCart;
@@ -34,7 +35,17 @@ public class ShoppingService {
     public void removeAllProduct(String customerId , Product product ){
         ShoppingCart shoppingCart = shoppingRepository.findByCustomerId(customerId).get();
 
-        shoppingCart.removeAllProduct(product);
+        CartLine cartLine = null;
+
+        for(CartLine cartLine2 : shoppingCart.getCartLineList()){
+            if(cartLine2.getProduct().equals(product)){
+                cartLine = cartLine2;
+            }
+        }
+
+        shoppingCart.removeAllProduct(cartLine);
+
+
         shoppingRepository.save(shoppingCart);
     }
 

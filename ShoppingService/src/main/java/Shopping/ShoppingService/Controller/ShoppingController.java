@@ -1,9 +1,6 @@
 package Shopping.ShoppingService.Controller;
 
-import Shopping.ShoppingService.Model.CartLines;
-import Shopping.ShoppingService.Model.Product;
-import Shopping.ShoppingService.Model.ProductOutOfStockError;
-import Shopping.ShoppingService.Model.ShoppingCart;
+import Shopping.ShoppingService.Model.*;
 import Shopping.ShoppingService.Service.ShoppingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -47,16 +44,17 @@ public class ShoppingController {
         }
     }
 
-    @DeleteMapping("/removeProductFromCartWithQuantity/{customerId}/quantity/{quantity}")
-    public ResponseEntity<?> removeProductWithQuantity(@PathVariable String customerId ,
-                                         @PathVariable Integer quantity
-            , String productId){
+    @DeleteMapping("/removeProductFromCartWithQuantity/{customerId}/product/{productId}/quantity/{quantity}")
+    public ResponseEntity<?> removeProductWithQuantity(@PathVariable("customerId") String customerId ,
+                                         @PathVariable("quantity") Integer quantity,
+                                                       @PathVariable("productId") String productId){
         shoppingService.removeProductWithQuantity(customerId,productId,quantity);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping("/removeProductFromCart/{customerId}")
-    public ResponseEntity<?> removeAllProduct(@PathVariable String customerId , String productId){
+    @DeleteMapping("/removeProductFromCart/{customerId}/product/{productId}")
+    public ResponseEntity<?> removeAllProduct(@PathVariable("customerId") String customerId ,
+                                              @PathVariable("productId") String productId){
 
         shoppingService.removeAllProduct(customerId,productId);
 
@@ -67,10 +65,10 @@ public class ShoppingController {
     public ResponseEntity<?> checkoutCart(@PathVariable String customerId){
         CartLines cartLines =  shoppingService.checkoutCart(customerId);
         System.out.println("Kall is  talking"+cartLines);
-        shoppingFeignClient.createOrder(cartLines);
+        Order order = shoppingFeignClient.createOrder(cartLines);
         shoppingService.removeCartLine(customerId);
 
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(order,HttpStatus.OK);
 
     }
 
@@ -78,7 +76,7 @@ public class ShoppingController {
     interface ShoppingFeignClient{
 
         @PostMapping("/order")
-        void createOrder(@RequestBody CartLines cartLines);
+        Order createOrder(@RequestBody CartLines cartLines);
 
     }
 

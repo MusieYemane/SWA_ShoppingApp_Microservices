@@ -19,17 +19,25 @@ public class OrderService {
     @Autowired
     private Sender sender;
 
+
+    public Orders getOrders(){
+            return new Orders(orderRepository.findAll());
+    }
+
+
+
+
     public Order createOrder(CartLines cartLines){
 
         Order order = new Order();
         List orderLineList = new ArrayList<>();
         for(CartLine cartLine : cartLines.getCartLineList()){
-            System.out.println("Still talking");
             OrderLine orderLine = new OrderLine();
             orderLine.setProduct(cartLine.getProduct());
             orderLine.setQuantity(cartLine.getQuantity());
             orderLineList.add(orderLine);
         }
+
         order.setOrderLineList(orderLineList);
         Order order1 = orderRepository.save(order);
         return order1;
@@ -43,6 +51,8 @@ public class OrderService {
 
         OrderLines orderLines = new OrderLines(order.getOrderLineList());
         System.out.println("3"+order);
+
+        orderRepository.save(order);
 
         Message<OrderLines> messageOrderLines = new Message<OrderLines>("productService" ,orderLines);
 
